@@ -72,7 +72,11 @@ local layouts =
     awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
     awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+    awful.layout.suit.magnifier,
+
+    floating = awful.layout.suit.floating,
+    tile = awful.layout.suit.tile,
+    magnifier = awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -88,7 +92,7 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
    names = { "main", "web", "dev", "d+w" },
-   layout = { layouts[1], layouts[1], layouts[1], layouts[1] }
+   layout = { layouts.floating, layouts.magnifier, layouts.tile, layouts.tile }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.

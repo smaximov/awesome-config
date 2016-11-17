@@ -91,8 +91,13 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-   names = { "main", "web", "dev", "d+w" },
-   layout = { layouts.floating, layouts.magnifier, layouts.tile, layouts.tile }
+   names = { "main", "web", "dev", "d+w", 5, 6, 7, 8, 9 },
+   layout = {
+      -- named tags:
+      layouts.floating, layouts.magnifier, layouts.tile, layouts.tile,
+      -- numeric tags
+      layouts.floating, layouts.floating, layouts.floating, layouts.floating, layouts.floating
+   }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
@@ -193,7 +198,7 @@ for s = 1, screen.count() do
                            awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
-    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.all, mytaglist.buttons)
+    mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.filter.noempty, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(s, awful.widget.tasklist.filter.currenttags, mytasklist.buttons)

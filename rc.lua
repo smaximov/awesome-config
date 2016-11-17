@@ -91,12 +91,12 @@ end
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-   names = { "main", "web", "dev", "d+w", 5, 6, 7, 8, 9 },
+   names = { "main", "web", "dev", "d+w", "im", 6, 7, 8, 9 },
    layout = {
       -- named tags:
-      layouts.floating, layouts.magnifier, layouts.tile, layouts.tile,
+      layouts.floating, layouts.magnifier, layouts.tile, layouts.tile, layouts.floating,
       -- numeric tags
-      layouts.floating, layouts.floating, layouts.floating, layouts.floating, layouts.floating
+      layouts.floating, layouts.floating, layouts.floating, layouts.floating
    }
 }
 for s = 1, screen.count() do
@@ -396,6 +396,9 @@ awful.rules.rules = {
     -- Display Emacs on 'dev' and 'd+w'
     { rule = { class = "Emacs" },
       properties = { tags = { tags[1][3], tags[1][4] } } },
+    -- Pin Telegram to 'im'
+    { rule = { class = "TelegramDesktop" },
+      properties = { tag = tags[1][5] } }
 }
 -- }}}
 

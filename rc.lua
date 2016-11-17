@@ -5,7 +5,7 @@ awful.rules = require("awful.rules")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
-local vicious = require("vicious")
+local widgets = require("widgets")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
@@ -128,13 +128,8 @@ menubar.utils.terminalsy = terminal -- Set the terminal for applications that re
 
 -- {{{ Wibox
 
--- Creating widgets
-datewidget = wibox.widget.textbox()
-batterywidget = wibox.widget.textbox()
-
--- Registering widgets
-vicious.register(datewidget, vicious.widgets.date, "%b %d %a, %R ", 59)
-vicious.register(batterywidget, vicious.widgets.bat, "$1$2% | ", 3, "BAT1")
+datewidget = widgets.date("%b %d %a, %R")
+batterywidget = widgets.battery("BAT1", "$1$2%")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
